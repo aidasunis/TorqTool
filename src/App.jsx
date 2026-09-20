@@ -51,7 +51,7 @@ export default function App() {
       <HypothesisSection />
       <SocialProof />
 
-      <section id="reservar" className="bg-torq-cream">
+      <section id="reservar" className="stripes-black text-white">
         <div className="max-w-3xl mx-auto px-5 sm:px-8 py-16 md:py-24">
           <Reveal>
             <ValidationForm />

@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Reveal from './Reveal'
 
@@ -33,11 +34,26 @@ export default function HypothesisSection() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="mt-10 border-2 border-torq-orange bg-torq-charcoal px-6 py-8 sm:px-10 sm:py-10 flex flex-col sm:flex-row items-center text-center sm:text-left gap-6 sm:gap-10">
+          <motion.div
+            animate={{
+              boxShadow: [
+                '0 0 0px 0px rgba(251,191,36,0)',
+                '0 0 32px 6px rgba(251,191,36,0.35)',
+                '0 0 0px 0px rgba(251,191,36,0)',
+              ],
+            }}
+            transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+            className="mt-10 border-2 border-torq-orange bg-torq-charcoal px-6 py-8 sm:px-10 sm:py-10 flex flex-col sm:flex-row items-center text-center sm:text-left gap-6 sm:gap-10"
+          >
             <div className="flex items-center gap-4 shrink-0">
-              <BoltIcon className="w-12 h-12 sm:w-16 sm:h-16 text-torq-yellow" />
+              <motion.div
+                animate={{ scale: [1, 1.15, 1] }}
+                transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <BoltIcon className="w-12 h-12 sm:w-16 sm:h-16 text-torq-yellow" />
+              </motion.div>
               <span className="font-display font-extrabold text-6xl sm:text-8xl text-torq-yellow leading-none">
-                8X
+                <CountUp target={8} suffix="X" />
               </span>
             </div>
             <div>
@@ -47,7 +63,7 @@ export default function HypothesisSection() {
                 segundos, con TORQ toma 5 — de forma consistente.
               </p>
             </div>
-          </div>
+          </motion.div>
         </Reveal>
 
         <div className="mt-10 grid md:grid-cols-3 gap-6">
@@ -69,6 +85,45 @@ export default function HypothesisSection() {
         </div>
       </div>
     </section>
+  )
+}
+
+function CountUp({ target, suffix = '' }) {
+  const [value, setValue] = useState(0)
+  const spanRef = useRef(null)
+  const startedRef = useRef(false)
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setValue(target)
+      return
+    }
+    const el = spanRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || startedRef.current) return
+        startedRef.current = true
+        const duration = 900
+        const start = performance.now()
+        function tick(now) {
+          const progress = Math.min((now - start) / duration, 1)
+          setValue(Math.round(progress * target))
+          if (progress < 1) requestAnimationFrame(tick)
+        }
+        requestAnimationFrame(tick)
+      },
+      { threshold: 0.4 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [target])
+
+  return (
+    <span ref={spanRef}>
+      {value}
+      {suffix}
+    </span>
   )
 }
 

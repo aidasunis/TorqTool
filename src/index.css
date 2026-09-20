@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Oswald", sans-serif;
+  --font-body: "Barlow", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-torq-orange: #FF5722;
+  --color-torq-orange-dark: #D8430F;
+  --color-torq-black: #0B0B0A;
+  --color-torq-charcoal: #171614;
+  --color-torq-yellow: #FBBF24;
+  --color-torq-cream: #FFF4EB;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-torq-cream);
+  color: var(--color-torq-black);
+}
+
+::selection {
+  background: var(--color-torq-black);
+  color: var(--color-torq-yellow);
+}
+
+.stripes-orange {
+  background-color: var(--color-torq-orange);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(0, 0, 0, 0.06) 0px,
+    rgba(0, 0, 0, 0.06) 2px,
+    transparent 2px,
+    transparent 26px
+  );
+}
+
+.stripes-black {
+  background-color: var(--color-torq-black);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 87, 34, 0.08) 0px,
+    rgba(255, 87, 34, 0.08) 2px,
+    transparent 2px,
+    transparent 26px
+  );
+}
+
+.chip-yellow {
+  background: var(--color-torq-yellow);
+  color: var(--color-torq-black);
+  box-shadow: 6px 6px 0px 0px var(--color-torq-black);
+}
+
+.btn-cta {
+  box-shadow: 6px 6px 0px 0px var(--color-torq-yellow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-cta:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px 0px var(--color-torq-yellow);
+}
+.btn-cta:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0px 0px var(--color-torq-yellow);
+}
+
+.card-hard {
+  box-shadow: 8px 8px 0px 0px var(--color-torq-black);
+}
+
+.input {
+  border: 2px solid var(--color-torq-black);
+  background: #fff;
+  padding: 0.65rem 0.85rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-torq-black);
+}
+.input:focus {
+  outline: 3px solid var(--color-torq-yellow);
+  outline-offset: 1px;
+}
+.input::placeholder {
+  color: rgba(11, 11, 10, 0.4);
+}

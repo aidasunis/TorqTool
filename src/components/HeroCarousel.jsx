@@ -181,7 +181,7 @@ export default function HeroCarousel() {
                 Concepto visual &middot; ilustración
               </p>
               <h2 className="font-display font-extrabold uppercase text-white leading-[0.95] text-3xl sm:text-6xl max-w-2xl">
-                Hecha para el taller real, no para la vitrina.
+                Más velocidad. Menos esfuerzo. Mejor acabado.
               </h2>
             </div>
           </motion.div>

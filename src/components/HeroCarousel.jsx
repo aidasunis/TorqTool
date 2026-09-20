@@ -3,12 +3,17 @@ import { motion } from 'framer-motion'
 import Reveal from './Reveal'
 import lifestyle from '../assets/torq-lifestyle.webp'
 
+// Los videos/posters viven en public/, así que Vite no los procesa como imports —
+// hay que anteponer BASE_URL a mano, o quedan rotos en cuanto el sitio no vive en la
+// raíz del dominio (p. ej. GitHub Pages en /TorqTool/).
+const BASE = import.meta.env.BASE_URL
+
 // Duración de cada diapositiva en ms. Las de video usan la duración real del
 // archivo para que nunca se corten a medias.
 const SLIDES = [
-  { type: 'video', src: '/torq-mecanismo.mp4', poster: '/frames/frame_140.webp', duration: 14025 },
+  { type: 'video', src: `${BASE}torq-mecanismo.mp4`, poster: `${BASE}frames/frame_140.webp`, duration: 14025 },
   { type: 'image', duration: 6000 },
-  { type: 'video-caption', src: '/torq-harness.mp4', poster: '/harness-poster.jpg', duration: 16255 },
+  { type: 'video-caption', src: `${BASE}torq-harness.mp4`, poster: `${BASE}harness-poster.jpg`, duration: 16255 },
 ]
 
 export default function HeroCarousel() {

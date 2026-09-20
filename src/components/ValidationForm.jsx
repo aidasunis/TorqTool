@@ -216,6 +216,12 @@ export default function ValidationForm({ onSubmitted }) {
         </p>
       )}
 
+      <p className="flex items-center gap-2 text-sm text-torq-black/70">
+        <LockIcon className="w-4 h-4 shrink-0 text-torq-orange-dark" />
+        El primer lote es limitado — reservar con depósito asegura tu unidad antes de la venta
+        general.
+      </p>
+
       <button
         type="submit"
         disabled={submitting}
@@ -323,6 +329,15 @@ function MetricsPanel({ metrics }) {
         </div>
       )}
     </div>
+  )
+}
+
+function LockIcon({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="4" y="11" width="16" height="9" rx="2" />
+      <path strokeLinecap="round" d="M7 11V7a5 5 0 0 1 10 0v4" />
+    </svg>
   )
 }
 

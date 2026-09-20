@@ -65,7 +65,7 @@ export default function ValidationForm({ onSubmitted }) {
 
   if (sent) {
     return (
-      <div className="bg-white border-2 border-torq-black card-hard p-8 sm:p-10 text-center flex flex-col items-center gap-4">
+      <div className="bg-white border-2 border-torq-black card-hard p-8 sm:p-10 text-center flex flex-col items-center gap-4 text-torq-black">
         <div className="w-16 h-16 rounded-full bg-torq-yellow flex items-center justify-center">
           <svg className="w-8 h-8 text-torq-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M20 6 9 17l-5-5" />
@@ -96,7 +96,7 @@ export default function ValidationForm({ onSubmitted }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white border-2 border-torq-black card-hard p-6 sm:p-10 flex flex-col gap-6"
+      className="bg-white border-2 border-torq-black card-hard p-6 sm:p-10 flex flex-col gap-6 text-torq-black"
     >
       <div>
         <h3 className="font-display font-bold uppercase text-2xl sm:text-3xl">Reserva tu lugar</h3>
@@ -158,7 +158,7 @@ export default function ValidationForm({ onSubmitted }) {
         </div>
       </Field>
 
-      <Field label="¿Pagarías un depósito para reservar tu TORQ del primer lote?" required>
+      <Field label="¿Pagarías un depósito para reservar tu herramienta TORQ del primer lote?" required>
         <div className="flex flex-wrap gap-2">
           <RadioPill name="depositoDispuesto" value="si" checked={form.depositoDispuesto === 'si'} onChange={update} accent>
             Sí, pagaría un depósito
@@ -227,7 +227,7 @@ export default function ValidationForm({ onSubmitted }) {
         disabled={submitting}
         className="btn-cta bg-torq-black text-white font-display font-bold uppercase tracking-wide text-base px-8 py-4 self-start disabled:opacity-60 disabled:cursor-wait"
       >
-        {submitting ? 'Enviando…' : <>Reservar mi TORQ &rarr;</>}
+        {submitting ? 'Enviando…' : <>Reservar mi herramienta TORQ &rarr;</>}
       </button>
     </form>
   )
